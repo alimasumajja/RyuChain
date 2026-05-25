@@ -90,7 +90,7 @@ chainproof/
 
 1. Clone Repository
 
-git clone https://github.com/alimasumajja/chainproof.git
+git clone https://github.com/alimasumajja/RyuChain.git
 
 2. Masuk ke Folder Project
 
