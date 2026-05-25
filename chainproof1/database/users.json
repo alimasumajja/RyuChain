@@ -1,0 +1,12 @@
+[
+    {
+        "username": "dhiya",
+        "password": "$2b$12$zHWw0VH9izcpBiGJxjXn5O/pYeQgWKM3YFY2Pn.Gdbe6ZcFd4Tw7W",
+        "role": "user"
+    },
+    {
+        "username": "user",
+        "password": "$2b$12$3wutwe8NFYx8wt4T8cV.rOKipm3pFACnqJZI5kCAiZp7.zUE8vXiW",
+        "role": "user"
+    }
+]

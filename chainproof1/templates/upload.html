@@ -1,0 +1,61 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="glass-card">
+
+    <div class="mb-4">
+
+        <h2 class="fw-bold">
+            📄 Upload Dokumen
+        </h2>
+
+        <p class="text-secondary">
+            Upload dokumen untuk
+            didaftarkan ke blockchain
+            menggunakan SHA-256,
+            RSA Signature, dan
+            Proof of Work.
+        </p>
+
+    </div>
+
+    <form method="POST"
+          enctype="multipart/form-data">
+
+        <div class="mb-4">
+
+            <label class="form-label mb-2">
+                Pilih Dokumen
+            </label>
+
+            <input
+                type="file"
+                name="file"
+                class="form-control"
+                required>
+
+        </div>
+
+        <button
+            type="submit"
+            class="btn btn-primary btn-custom w-100">
+
+            Upload Dokumen
+        </button>
+
+    </form>
+
+    {% if message %}
+
+    <div class="alert alert-success mt-4">
+
+        {{ message }}
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

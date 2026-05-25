@@ -1,0 +1,143 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="glass-card">
+
+    <div class="mb-4">
+
+        <h2 class="fw-bold">
+            ✅ Verifikasi Dokumen
+        </h2>
+
+        <p class="text-secondary">
+            Periksa apakah dokumen
+            sudah terdaftar dan
+            valid di blockchain.
+        </p>
+
+    </div>
+
+    <form method="POST"
+          enctype="multipart/form-data">
+
+        <div class="mb-4">
+
+            <label class="form-label mb-2">
+                Pilih Dokumen
+            </label>
+
+            <input
+                type="file"
+                name="file"
+                class="form-control"
+                required>
+
+        </div>
+
+        <button
+            type="submit"
+            class="btn btn-success btn-custom w-100">
+
+            Verifikasi Dokumen
+        </button>
+
+    </form>
+
+</div>
+
+
+{% if result %}
+
+<div class="glass-card mt-4">
+
+    {% if result.found %}
+
+        <div class="text-center">
+
+            <h2 class="text-success fw-bold">
+                ✅ Dokumen VALID
+            </h2>
+
+            <p class="text-secondary mt-2">
+                Dokumen ditemukan
+                di blockchain
+            </p>
+
+        </div>
+
+        <hr class="border-secondary">
+
+        <div class="row mt-4">
+
+            <div class="col-md-6 mb-3">
+
+                <div class="p-3 rounded"
+                     style="
+                     background:
+                     rgba(255,255,255,.05);
+                     ">
+
+                    <small class="text-secondary">
+                        Block Number
+                    </small>
+
+                    <h4 class="mt-2">
+                        #{{ result.block_index }}
+                    </h4>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-6 mb-3">
+
+                <div class="p-3 rounded"
+                     style="
+                     background:
+                     rgba(255,255,255,.05);
+                     ">
+
+                    <small class="text-secondary">
+                        Signature Status
+                    </small>
+
+                    <h4 class="mt-2">
+
+                        {% if result.signature_valid %}
+                            ✅ Valid
+                        {% else %}
+                            ❌ Invalid
+                        {% endif %}
+
+                    </h4>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    {% else %}
+
+        <div class="text-center">
+
+            <h2 class="text-danger fw-bold">
+                ❌ Dokumen Tidak Ditemukan
+            </h2>
+
+            <p class="text-secondary">
+                Dokumen belum
+                terdaftar di blockchain
+                atau telah berubah.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endif %}
+
+{% endblock %}

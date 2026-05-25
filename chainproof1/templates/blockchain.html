@@ -1,0 +1,169 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="d-flex
+            justify-content-between
+            align-items-center
+            mb-4">
+
+    <div>
+
+        <h2 class="fw-bold">
+            ⛓ Blockchain Explorer
+        </h2>
+        <div class="mb-4">
+
+            {% if blockchain_valid %}
+
+                <div class="alert
+                            alert-success">
+
+                    ✅ Blockchain Secure
+                    —
+                    {{ validation_message }}
+
+                </div>
+
+            {% else %}
+
+                <div class="alert
+                            alert-danger">
+
+                    ❌ Blockchain Manipulated
+                    —
+                    {{ validation_message }}
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+        <p class="text-secondary">
+            Riwayat seluruh block
+            pada jaringan ChainProof
+        </p>
+
+    </div>
+
+    <div class="glass-card py-3 px-4">
+
+        <small class="text-secondary">
+            Total Block
+        </small>
+
+        <h4 class="mb-0">
+            {{ chain|length }}
+        </h4>
+
+    </div>
+
+</div>
+
+
+<div class="timeline">
+
+{% for block in chain %}
+
+<div class="timeline-item">
+
+    <!-- Garis penghubung -->
+    {% if not loop.last %}
+    <div class="chain-line"></div>
+    {% endif %}
+
+    <!-- Node -->
+    <div class="chain-node">
+        🔗
+    </div>
+
+    <!-- Block Card -->
+    <div class="glass-card block-card">
+
+        <div class="d-flex
+                    justify-content-between
+                    align-items-center
+                    mb-4">
+
+            <div>
+
+                <small class="text-secondary">
+                    Block Number
+                </small>
+
+                <h4 class="fw-bold">
+
+                    {% if block.index == 0 %}
+                        Genesis Block
+                    {% else %}
+                        #{{ block.index }}
+                    {% endif %}
+
+                </h4>
+
+            </div>
+
+            <span class="badge
+                         bg-primary
+                         px-3
+                         py-2">
+
+                Verified
+
+            </span>
+
+        </div>
+
+        <div class="mb-3">
+
+            <small class="text-secondary">
+                Block Hash
+            </small>
+
+            <div class="hash-box mt-2 p-3 rounded bg-dark">
+
+                {{ block.hash }}
+
+            </div>
+
+        </div>
+
+        <div class="mb-3">
+
+            <small class="text-secondary">
+                Previous Hash
+            </small>
+
+            <div class="hash-box mt-2 p-3 rounded bg-dark">
+
+                {{ block.previous_hash }}
+
+            </div>
+
+        </div>
+
+        <div>
+
+            <small class="text-secondary">
+                Document Hash
+            </small>
+
+            <div class="hash-box mt-2 p-3 rounded
+                        border border-primary">
+
+                {{ block.document_hash }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock %}
